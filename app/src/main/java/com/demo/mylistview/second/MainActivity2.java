@@ -3,7 +3,10 @@ package com.demo.mylistview.second;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.demo.mylistview.R;
 
@@ -27,6 +30,15 @@ public class MainActivity2  extends AppCompatActivity {
         StudentAdapter adapter=new StudentAdapter(MainActivity2.this,R.layout.item_list,studentList);
         ListView listView= (ListView) findViewById(R.id.myList_lv);
         listView.setAdapter(adapter);
+
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Student student=studentList.get(position);
+                Toast.makeText(MainActivity2.this, student.getName(), Toast.LENGTH_SHORT).show();
+            }
+        });
+
 
     }
 
